@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class MenuApp {
     private static DishService dishService = new DishService(new DishDaoImpl());
 
-    private static String menuActions =
+    private static String menuCmd =
             "<-------------------------- MENU -------------------------->" + "\n" +
                     "  1          - \"add new dish\"" + "\n" +
                     "  2          - \"show all dishes\"" + "\n" +
@@ -28,7 +28,7 @@ public class MenuApp {
 
     public static void main(String[] args) {
         new LiquibaseHelper().runScripts(); // set precondition to the dish table
-        System.out.println(menuActions);
+        System.out.println(menuCmd);
         startMenuApp();
         JpaUtil.closeEntMngFactory();
         System.out.println(".....Finish app");
@@ -37,9 +37,9 @@ public class MenuApp {
     private static void startMenuApp() {
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
-                String action = scanner.nextLine();
+                String cmd = scanner.nextLine();
                 MenuCmd menuCmd = null; // press button imitation
-                switch (action) {
+                switch (cmd) {
                     case "1":
                         menuCmd = new AddNewDishCmd(dishService, scanner);
                         break;
@@ -65,12 +65,12 @@ public class MenuApp {
                         menuCmd = new DeleteDishCmd(dishService, scanner);
                         break;
                     case "help":
-                        System.out.println(menuActions);
+                        System.out.println(MenuApp.menuCmd);
                         break;
                     case "q":
                         return;
                     default:
-                        System.out.println(">>.....Unsupported command \"" + action + "\"");
+                        System.out.println(">>.....Unsupported command \"" + cmd + "\"");
                         break;
                 }
                 if (menuCmd != null) {
