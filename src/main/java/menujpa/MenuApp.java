@@ -28,13 +28,13 @@ public class MenuApp {
 
     public static void main(String[] args) {
         new LiquibaseHelper().runScripts(); // set precondition to the dish table
-        System.out.println(menuCmd);
         startMenuApp();
         JpaUtil.closeEntMngFactory();
         System.out.println(".....Finish app");
     }
 
     private static void startMenuApp() {
+        System.out.println(menuCmd);
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 String cmd = scanner.nextLine();
