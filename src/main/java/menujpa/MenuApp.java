@@ -30,7 +30,7 @@ public class MenuApp {
         new LiquibaseHelper().runScripts(); // set precondition to the dish table
         startMenuApp();
         JpaUtil.closeEntMngFactory();
-        System.out.println(".....Finish app");
+        System.out.println(">>.....Finish app");
     }
 
     private static void startMenuApp() {
