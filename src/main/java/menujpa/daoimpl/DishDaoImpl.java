@@ -59,10 +59,7 @@ public class DishDaoImpl implements DishDao {
         EntityManager entityManager = JpaUtil.createEntityManager();
         try {
             Query query = entityManager.createQuery("SELECT d FROM Dish d", Dish.class);
-            List<Dish> dishes = (List<Dish>) query.getResultList();
-            return dishes;
-        } catch (NoResultException ex) {
-            return null;
+            return (List<Dish>) query.getResultList();
         } finally {
             entityManager.close();
         }
@@ -76,10 +73,7 @@ public class DishDaoImpl implements DishDao {
                     "SELECT d FROM Dish d WHERE (d.price BETWEEN :minPrice AND :maxPrice)", Dish.class);
             query.setParameter("minPrice", minPrice);
             query.setParameter("maxPrice", maxPrice);
-            List<Dish> dishes = (List<Dish>) query.getResultList();
-            return dishes;
-        } catch (NoResultException ex) {
-            return null;
+            return (List<Dish>) query.getResultList();
         } finally {
             entityManager.close();
         }
@@ -91,10 +85,7 @@ public class DishDaoImpl implements DishDao {
         try {
             Query query = entityManager.createQuery(
                     "SELECT d FROM Dish d WHERE d.discount IS NOT NULL", Dish.class);
-            List<Dish> dishes = (List<Dish>) query.getResultList();
-            return dishes;
-        } catch (NoResultException ex) {
-            return null;
+            return (List<Dish>) query.getResultList();
         } finally {
             entityManager.close();
         }
@@ -142,10 +133,7 @@ public class DishDaoImpl implements DishDao {
         EntityManager entityManager = JpaUtil.createEntityManager();
         try {
             Query query = entityManager.createNativeQuery("SELECT id FROM dish");
-            List<Integer> ids = (List<Integer>) query.getResultList();
-            return ids;
-        } catch (NoResultException ex) {
-            return null;
+            return (List<Integer>) query.getResultList();
         } finally {
             entityManager.close();
         }
