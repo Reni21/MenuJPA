@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <!--insert data into table-->
+    <!--insert data into table before app start-->
 
     <preConditions>
         <tableExists schemaName="mydb" tableName="dish" />
