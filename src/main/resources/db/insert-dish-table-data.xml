@@ -13,7 +13,7 @@
     </preConditions>
 
 
-    <changeSet id="1" author="reni" runAlways="true">
+    <changeSet id="data:dish" author="reni" runAlways="true">
         <sql >
             INSERT INTO dish (discout, name, price, weight) VALUES (15, 'White Rice', 25, 0.25);
             INSERT INTO dish (discout, name, price, weight) VALUES (null, 'Carry rice', 40, 0.3);
